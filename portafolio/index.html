@@ -1,36 +1,282 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/confi.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio Profesional</title>
+  <style>
+    /* ----------- Reset ----------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #222;
+      scroll-behavior: smooth;
+    }
+
+    h2 {
+      font-size: 2.3em;
+      margin-bottom: 20px;
+      color: #0d47a1;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #ffffff;
+    }
+
+    /* ----------- Navbar ----------- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      z-index: 1000;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: #5d5b5b;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #696a6b;
+    }
+
+    /* ----------- Hero ----------- */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://s44783.pcdn.co/wp-content/uploads/sites/6/2024/08/programming-background-with-person-working-with-codes-computer-1024x683.jpg.optimal.jpg') no-repeat center/cover;
+      position: relative;
+      color: #fff;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    header h1, header p, header a {
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      margin-bottom: 15px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-bottom: 25px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    header a {
+      display: inline-block;
+      padding: 12px 25px;
+      background: #0d47a1;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header a:hover {
+      background: #1565c0;
+      transform: scale(1.05);
+    }
+
+    /* ----------- Secciones ----------- */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 1100px;
+      margin: auto;
+      animation: fadeInUp 1s ease;
+      background-color: #111;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: #313030;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 20%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #0d47a1;
+    }
+
+    /* ----------- Animaciones ----------- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ----------- Footer ----------- */
+    footer {
+      background: #111;
+      color: #ddd;
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: #0d47a1;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer a:hover {
+      color: #1565c0;
+    }
+  </style>
 </head>
 <body>
-    <div class="pantalla">
-    <header class="menu">
-        <h1>@aamelendez</h1>
-        <span class="material-symbols-outlined">
-            menu
-            </span>
-    </header>
 
-    <div class="perfil">
-            <div class="img_pefil">
-            <img src="https://webysoporte.es/components/com_jsn/assets/img/default.jpg" alt="" class="img_perfil">
-            </div>
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="#inicio">Inicio</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#stacks">Stacks</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- Hero -->
+  <header id="inicio">
+    <h1>¡Hola! Soy Estudiante de Computación</h1>
+    <p>Apasionado por la programación, el diseño web y la tecnología 💻</p>
+    <a href="#contacto">Contáctame</a>
+  </header>
+
+  <!-- Herramientas -->
+  <section id="herramientas">
+    <h2>⚒️ Herramientas</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="VSCode">
+        <h3>Visual Studio Code</h3>
+        <p>Editor de código moderno y flexible.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+        <h3>Git & GitHub</h3>
+        <p>Control de versiones y repositorios.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/888/888853.png" alt="Canva">
+        <h3>Canva</h3>
+        <p>Diseños gráficos rápidos y sencillos.</p>
+      </div>
+      <div class="card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MySQL">
+        <h3>MySQL</h3>
+        <p>Bases de datos relacionales.</p>
+      </div>
     </div>
-    <div class="informacion">
-        <h1> hi, i'm andre 🤝</h1>
-        <p class="descripcion">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis nesciunt exercitationem modi beatae! Deserunt esse placeat amet alias? Distinctio voluptatem recusandae explicabo quibusdam fugit nihil inventore, nesciunt qui magni quia.
-        </p>
+  </section>
+
+  <!-- Stacks -->
+  <section id="stacks">
+    <h2>💻 Stacks</h2>
+    <div class="grid">
+      <div class="card"><h3>Frontend</h3><p>HTML, CSS y JavaScript.</p></div>
+      <div class="card"><h3>Backend</h3><p>Node.js y Express.</p></div>
+      <div class="card"><h3>Base de Datos</h3><p>MySQL y MongoDB.</p></div>
     </div>
-    <div class="estado"></div>
-    <div class="redes"></div>
-</div>
-    
-</body>
-</html>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos">
+    <h2>🚀 Proyectos</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://i.ibb.co/n6kT4Cj/code-example.jpg" alt="Proyecto 1">
+        <h3>📋 App de Tareas</h3>
+        <p>Aplicación para organizar tareas diarias con JS.</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/LCMb7vg/ui-design.jpg" alt="Proyecto 2">
+        <h3>🛒 Mini E-commerce</h3>
+        <p>Tienda en línea con carrito básico.</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/sm6rVwN/database.jpg" alt="Proyecto 3">
+        <h3>🏥 Sistema Escolar</h3>
+        <p>Gestión de estudiantes y notas con MySQL.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>📩 Contáctame</h2>
+    <p>¿Quieres ponerte en contacto conmigo? Escríbeme por correo o WhatsApp.</p>
+    <div style="margin-top:20px;">
+      <a href="mailto:tuemail@example.com" style="margin:10px; padding:12px 25px; background:#0d47a1; color:white; border-radius:25px; text-decoration:none;">Correo</a>
+      <a href="https://wa.me/50212345678" target="_blank" style="margin:10px; padding:12px 25px; background:#25d366; color:white; border-radius:25px; text-decoration:none;">WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 | Portafolio de Estudiante de Computación 💙 <br>
+    <a href="#inicio">Inicio</a> | <a href="#proyectos">Proyectos</a> | <a href="#contacto">Contacto</a>
+  </footer>
+
+ 
